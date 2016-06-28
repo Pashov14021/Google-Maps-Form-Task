@@ -1,0 +1,38 @@
+
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background-color: #80bfff;         
+	font:14px sans-serif;
+}
+#mapLm{
+	height: 400px;
+	width: 500px;
+	left: 270px;
+	bottom: 570px;
+
+	
+
+}
+#map {
+	height: 400px;
+	width: 500px;
+	bottom: 30px
+
+}
+
+#myForm{
+	border:1px ;
+	height: 180px;
+	width: 250px; 
+	margin-bottom: 4px;
+	margin-left: 7px;
+	margin-right: 4px ;
+	margin-top: 4px ;
+	bottom: 400px
+}
+#done{
+	border-left: 4px
+
+}
