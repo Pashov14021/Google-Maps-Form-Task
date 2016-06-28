@@ -70,14 +70,14 @@ jQuery(document).ready(function() {
 					function(results, status) {
 						if(status == google.maps.GeocoderStatus.OK) {
 							if(results[0]) {
-								document.getElementById("addr").value = results[0].formatted_address;
+								$("#addr").val(results[0].formatted_address);
 							}
 							else {
-								document.getElementById("addr").value = "No results";
+								$("#addr").val("No results");
 							}
 						}
 						else {
-							document.getElementById("addr").value = status;
+							$("#addr").val(status);
 						}
 					});
 			}
@@ -105,27 +105,17 @@ inputs.change(function() {
 jQuery(document).ready(function() {
 	jQuery(document).on("click", "#done",  function(e) {
 		e.preventDefault();
-		var valFn = $("#Fname").val();
-		var valLn = $("#Lname").val();
-		var valAddr = $("#addr").val();
-		var valEm = $("#email").val();
-		var valPh = $("#phone").val();
-		var valweb = $("#web").val();
+		var data = {
+			"First name":$("#Fname").val(),
+			"Last name": $("#Lname").val(),
+			"Address": $("#addr").val(),
+			"Email":$("#email").val(),
+			"Phone":$("#phone").val(),
+			"Website":$("#web").val(),
+		};
 		if (typeof(Storage) !== "undefined") {
-			localStorage.setItem("F_name", valFn);
-			localStorage.setItem("L_name", valLn);
-			localStorage.setItem("Address", valAddr);
-			localStorage.setItem("Email", valEm);
-			localStorage.setItem("Phone", valPh);
-			localStorage.setItem("Website", valweb);
-			localStorage.setItem("space", "; ");
-			document.getElementById("mapLm").innerHTML = localStorage.getItem("F_name") + localStorage.getItem("space") +
-			localStorage.getItem("L_name") + localStorage.getItem("space") + localStorage.getItem("Address") + 
-			localStorage.getItem("space") + localStorage.getItem("Email") + localStorage.getItem("space") +
-			localStorage.getItem("Phone") + localStorage.getItem("space") + localStorage.getItem("Website");
-
-
-
+			localStorage.setItem("data", JSON.stringify(data));
+			$("#mapLm").html(localStorage.getItem("data"));
 		} else {
 			$("#mapLm").val("Sorry, your browser does not support Web Storage...")
 		}
